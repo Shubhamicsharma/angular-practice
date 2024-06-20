@@ -1,4 +1,4 @@
-<h1>Home Registration Form</h1>
+<!-- <h1>Home Registration Form</h1>
 
 <div>
   <form>
@@ -36,4 +36,53 @@
 
     <button (click)="onRegister()">Register</button>
   </form>
+</div> -->
+
+
+<div class="address-container">
+  <h2>Current Address</h2>
+  <form action="">
+    <label>Flat No</label>
+    <input type="text" [(ngModel)]="currentFlatNo" name="currentFlatNo">
+
+    <br><br>
+
+    <label>Building</label>
+    <input type="text" [(ngModel)]="currentBuilding" name="currentBuilding">
+
+    <br><br>
+
+    <label>Landmark</label>
+    <input type="text" [(ngModel)]="currentLandmark" name="currentLandmark">
+
+    <br><br>
+
+    <label>City</label>
+    <input type="text" [(ngModel)]="currentCity" name="currentCity">
+
+    <br><br>
+
+    <label>Pincode</label>
+    <input type="number" [(ngModel)]="currentPincode" name="currentPincode">
+
+    <br><br>
+
+    <label>State</label>
+    <input type="text" [(ngModel)]="currentState" name="currentState">
+  </form>
+
+  <input type="checkbox" (click)="onSameAsCurrent($event)">Same as Current Address
+
+
+  <app-home-child
+    [sameAsCurrentFlatNo] = "toSendCurrentFlatNo"
+    [sameAsCurrentBuilding] = "toSendCurrentBuilding"
+    [sameAsCurrentLandmark] = "toSendCurrentLandmark"
+    [sameAsCurrentCity] = "toSendCurrentCity"
+    [sameAsCurrentPincode] = "toSendCurrentPincode"
+    [sameAsCurrentState] = "toSendCurrentState"
+
+    (permanentAddressData) = "onSameAsPermanent($event)"
+  ></app-home-child>
 </div>
+

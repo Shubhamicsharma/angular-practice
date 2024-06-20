@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'
+import { LoginChildComponent } from './login-child/login-child.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, LoginChildComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
   formTitle = "Login Form"
   emailValue = "shubhamicsharma@gmail.com"
   password = ""
+  childData = "";
   onLogin(){
 
   }
@@ -34,4 +36,10 @@ export class LoginComponent implements OnInit {
       this.emailValue = localStorage.getItem('username') || "";
       this.password = localStorage.getItem("password") || "";
   }
+
+  onRecieveData(event:any){
+    console.log(event)
+    this.childData = event;
+  }
+
 }

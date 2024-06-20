@@ -18,3 +18,12 @@
 <br />
 
 <button (click)="onLogin()">Login</button>
+
+<hr>
+<label>Child Data</label>
+<input [(ngModel)]="childData" type="text" name="childData" id="">
+
+
+<hr />
+
+<app-login-child [parentFormTitle]="formTitle" [parentUsername]="emailValue" [parentPassword]="password" (childDataObject)="onRecieveData($event)"></app-login-child>

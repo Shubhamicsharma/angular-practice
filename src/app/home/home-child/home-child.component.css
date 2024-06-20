@@ -1,0 +1,8 @@
+input[type=checkbox] {
+  margin-bottom: 1rem;
+}
+
+label {
+  width: 150px;
+  display: inline-block;
+}

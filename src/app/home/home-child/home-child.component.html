@@ -1,0 +1,35 @@
+<h2>Permanent Address</h2>
+
+<input id="sameAsPermanent" (click)="onSameAsPermanent($event)" type="checkbox">Same As Permanent Address
+
+<form action="">
+  <label>Flat No</label>
+  <input type="text" [(ngModel)]="sameAsCurrentFlatNo" name="sameAsCurrentFlatNo">
+
+  <br><br>
+
+  <label>Building</label>
+  <input type="text" [(ngModel)]="sameAsCurrentBuilding" name="sameAsCurrentBuilding">
+
+  <br><br>
+
+  <label>Landmark</label>
+  <input type="text" [(ngModel)]="sameAsCurrentLandmark" name="sameAsCurrentLandmark">
+
+  <br><br>
+
+  <label>City</label>
+  <input type="text" [(ngModel)]="sameAsCurrentCity" name="sameAsCurrentCity">
+
+  <br><br>
+
+  <label>Pincode</label>
+  <input type="number" [(ngModel)]="sameAsCurrentPincode" name="permanentPincode">
+
+  <br><br>
+
+  <label>State</label>
+  <input type="text" [(ngModel)]="sameAsCurrentState" name="sameAsCurrentState">
+</form>
+
+
