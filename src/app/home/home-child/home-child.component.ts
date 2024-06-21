@@ -9,17 +9,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home-child.component.css'
 })
 export class HomeChildComponent {
-  // Permanent Address Variables
-
-
-
-  // Functionality To Receive Data From Parent
-  @Input() sameAsCurrentFlatNo = ""
-  @Input() sameAsCurrentBuilding = ""
-  @Input() sameAsCurrentLandmark = ""
-  @Input() sameAsCurrentCity = ""
-  @Input() sameAsCurrentPincode = ""
-  @Input() sameAsCurrentState = ""
+  // Variable of Input type for two way data binding and data receiving
+  @Input() permanentAddress = {
+    flatNo : "",
+    building : "",
+    landmark : "",
+    city : "",
+    pincode : "",
+    state : ""
+  }
 
   @Output() permanentAddressData = new EventEmitter();
 
@@ -32,17 +30,7 @@ export class HomeChildComponent {
 
   // Function to emit data on Same as permanent address box check
   onEmitData(){
-    const permanentAddressObject = {
-      flatNo : this.sameAsCurrentFlatNo,
-      building: this.sameAsCurrentBuilding,
-      landmark : this.sameAsCurrentLandmark,
-      city : this.sameAsCurrentCity,
-      pincode : this.sameAsCurrentPincode,
-      state : this.sameAsCurrentState
-    }
-    this.permanentAddressData.emit(permanentAddressObject);
-
+    const permanentAddressSender = this.permanentAddress;
+    this.permanentAddressData.emit(permanentAddressSender);
   }
-
-
 }

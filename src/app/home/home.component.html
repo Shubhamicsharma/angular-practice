@@ -1,88 +1,79 @@
 <!-- <h1>Home Registration Form</h1>
 
 <div>
-  <form>
-    <label for="firstName">First Name</label>
-    <input [(ngModel)]="firstName" name="firstName">
+	<form>
+		<label for="firstName">First Name</label>
+		<input [(ngModel)]="firstName" name="firstName">
 
-    <br /><br />
+		<br /><br />
 
-    <label for="lastName">Last Name</label>
-    <input [(ngModel)]="lastName" name="lastName">
+		<label for="lastName">Last Name</label>
+		<input [(ngModel)]="lastName" name="lastName">
 
-    <br /><br />
+		<br /><br />
 
-    <label for="email">Email</label>
-    <input [(ngModel)]="email" name="email">
+		<label for="email">Email</label>
+		<input [(ngModel)]="email" name="email">
 
-    <br />
-    <br />
+		<br />
+		<br />
 
-    <label for="phone">Phone</label>
-    <input [(ngModel)]="phone" name="phone">
+		<label for="phone">Phone</label>
+		<input [(ngModel)]="phone" name="phone">
 
-    <br /><br />
+		<br /><br />
 
-    <label for="password">Password</label>
-    <input [(ngModel)]="password" name="password">
+		<label for="password">Password</label>
+		<input [(ngModel)]="password" name="password">
 
-    <br /><br />
+		<br /><br />
 
-    <label for="confirmPassword">Confirm Password</label>
-    <input [(ngModel)]="confirmPassword" name="confirmPassword">
+		<label for="confirmPassword">Confirm Password</label>
+		<input [(ngModel)]="confirmPassword" name="confirmPassword">
 
-    <br />
-    <br />
+		<br />
+		<br />
 
-    <button (click)="onRegister()">Register</button>
-  </form>
+		<button (click)="onRegister()">Register</button>
+	</form>
 </div> -->
 
 
 <div class="address-container">
-  <h2>Current Address</h2>
-  <form action="">
-    <label>Flat No</label>
-    <input type="text" [(ngModel)]="currentFlatNo" name="currentFlatNo">
+	<h2>Current Address</h2>
+	<form action="">
+		<label>Flat No</label>
+		<input type="text" [(ngModel)]="currentFlatNo" name="currentFlatNo">
 
-    <br><br>
+		<br><br>
 
-    <label>Building</label>
-    <input type="text" [(ngModel)]="currentBuilding" name="currentBuilding">
+		<label>Building</label>
+		<input type="text" [(ngModel)]="currentBuilding" name="currentBuilding">
 
-    <br><br>
+		<br><br>
 
-    <label>Landmark</label>
-    <input type="text" [(ngModel)]="currentLandmark" name="currentLandmark">
+		<label>Landmark</label>
+		<input type="text" [(ngModel)]="currentLandmark" name="currentLandmark">
 
-    <br><br>
+		<br><br>
 
-    <label>City</label>
-    <input type="text" [(ngModel)]="currentCity" name="currentCity">
+		<label>City</label>
+		<input type="text" [(ngModel)]="currentCity" name="currentCity">
 
-    <br><br>
+		<br><br>
 
-    <label>Pincode</label>
-    <input type="number" [(ngModel)]="currentPincode" name="currentPincode">
+		<label>Pincode</label>
+		<input type="number" [(ngModel)]="currentPincode" name="currentPincode">
 
-    <br><br>
+		<br><br>
 
-    <label>State</label>
-    <input type="text" [(ngModel)]="currentState" name="currentState">
-  </form>
+		<label>State</label>
+		<input type="text" [(ngModel)]="currentState" name="currentState">
+	</form>
 
-  <input type="checkbox" (click)="onSameAsCurrent($event)">Same as Current Address
+	<input type="checkbox" (click)="onSameAsCurrent($event)">Same as Current Address
 
-
-  <app-home-child
-    [sameAsCurrentFlatNo] = "toSendCurrentFlatNo"
-    [sameAsCurrentBuilding] = "toSendCurrentBuilding"
-    [sameAsCurrentLandmark] = "toSendCurrentLandmark"
-    [sameAsCurrentCity] = "toSendCurrentCity"
-    [sameAsCurrentPincode] = "toSendCurrentPincode"
-    [sameAsCurrentState] = "toSendCurrentState"
-
-    (permanentAddressData) = "onSameAsPermanent($event)"
-  ></app-home-child>
+	<app-home-child [permanentAddress]="currentAddressSender" (permanentAddressData) = "onSameAsPermanent($event)">
+	</app-home-child>
 </div>
 
