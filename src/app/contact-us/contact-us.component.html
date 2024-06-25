@@ -3,6 +3,8 @@
   <input type="text" [(ngModel)]="addressDetails.address" name="address">
   <label>Contact No</label>
   <input type="text" [(ngModel)]="addressDetails.contact" name="contact">
-  <button>Send</button>
+  <label>Service Data</label>
+  <input type="text" [(ngModel)]="sharedata" name="sharedata">
+  <button (click)="onSendData()">Send</button>
 </form>
 <app-contact-us-child [parentData]="addressDetails"></app-contact-us-child>
