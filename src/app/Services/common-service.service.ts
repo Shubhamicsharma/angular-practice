@@ -17,4 +17,17 @@ export class CommonServiceService {
     this.commonDataReciever.next(serviceData);
   }
 
+  setDollarData(dollarData:any){
+    this.data$.next(dollarData);
+
+  }
+
+  dataObject = new BehaviorSubject({
+    data : '',
+    dollarData : ''
+  })
+
+  setObjectData(obj : any){
+    this.dataObject.next(obj)
+  }
 }

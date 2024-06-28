@@ -1,0 +1,19 @@
+<h1>Ng For</h1>
+
+<select>
+  <option value="" *ngFor="let c of countries">{{c}}</option>
+</select>
+
+
+<h1>Table Using Ng For</h1>
+
+<table>
+  <thead>
+    <th *ngFor="let header of headers">{{header}}</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let studentData of marks">
+      <td *ngFor="let data1 of studentData | keyvalue">{{data1.value}}</td>
+    </tr>
+  </tbody>
+</table>

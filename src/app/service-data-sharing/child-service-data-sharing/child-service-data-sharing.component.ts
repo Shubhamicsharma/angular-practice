@@ -11,9 +11,28 @@ import { CommonServiceService } from '../../Services/common-service.service';
 export class ChildServiceDataSharingComponent {
   constructor(private obj:CommonServiceService){}
 
+  dataReciever = ""
+  dollarData = ""
+
+  objReciever = {
+    data : '',
+    dollarData : ''
+  }
+
   getDataNew(){
     this.obj.commonDataReciever.subscribe(res => {
-      alert(res)
+      this.dataReciever = res
+    })
+
+    this.obj.data$.subscribe(res => {
+      this.dollarData = res;
+    })
+
+  }
+
+  getDataObj(){
+    this.obj.dataObject.subscribe(res => {
+      this.objReciever = res
     })
   }
 

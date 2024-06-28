@@ -1,0 +1,299 @@
+<div *ngIf="loginViewer" class="login-parent-container">
+  <div  class="login-container shadow">
+    <h1>Login</h1>
+    <form action="">
+      <div>
+        <input type="text" [(ngModel)]="loginUsername" name="loginUsername" placeholder=" " id="username"  required>
+        <label for="username">Username</label>
+      </div>
+      <div>
+        <input type="password" [(ngModel)]="loginPassword" placeholder=" " id="password" name="loginPassword">
+        <label for="password">Password</label>
+      </div>
+      <div class="">
+        <input class="d-inline w-auto me-2" type="checkbox" name="" id="rememberMe" (click)="onRememberMe($event)"><p class="d-inline">Remember Me</p>
+      </div>
+      <div class="btn-container">
+        <button class="login my-2" (click)="onLogin()">Login</button>
+
+        <p class="text-danger" *ngIf="invalidCredentials">Invalid Username or Password. Try Again</p>
+
+        <p class="my-2">Not Registered?</p>
+        <button (click)="onRegisterNow()" class="login my-2">Register Now</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="registerViewer" class="login-parent-container">
+  <div  class="login-container">
+    <h1>Register</h1>
+    <form action="">
+      <div>
+        <input type="text" [(ngModel)]="registerUsername" name="registerUsername" placeholder=" " id="username"  required>
+        <label for="username">Username</label>
+      </div>
+      <div>
+        <input type="password" [(ngModel)]="registerPassword" placeholder=" " id="password" name="registerPassword">
+        <label for="password">Password</label>
+      </div>
+      <div class="btn-container">
+        <button class="login my-2" (click)="onRegister()">Register</button>
+
+        <p class="text-danger" *ngIf="invalidRegisterCredentials">Please Enter Valid Username and Password</p>
+        <p class="text-danger" *ngIf="alreadyRegistered">User already Registered. Please Login</p>
+
+        <p class="my-2">Already Registered?</p>
+        <button (click)="onLoginHere()" class="login my-2">Login Now</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="contentViewer" class="content-parent-container">
+
+  <div class="p-3 d-flex justify-content-between align-items-center gap-5">
+    <div>
+      <img src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png" width="50" alt="">
+    </div>
+    <h1 class="m-0">XYZ</h1>
+    <div class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Actions
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#" (click)="onSubscribe()">{{subscribeBtnText}}</a></li>
+        <li><a class="dropdown-item" href="#" (click)="onLogout()" >Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-container p-4 d-flex justify-content-evenly flex-wrap">
+    <!-- <div class="content">
+      <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 1</p>
+        <button type="button" class="btn btn-primary">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger">This Content is only available to subscribed users, subscribe to watch</b>
+
+    </div> -->
+
+    <!-- src/app/app.component.html -->
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 1</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(0)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 0">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 2</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(1)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 1">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 3</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(2)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 2">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 4</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(3)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 3">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 5</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(4)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 4">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 6</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(5)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 5">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 7</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(6)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 6">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 8</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(7)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 7">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 9</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(8)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 8">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 10</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(9)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 9">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 11</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(10)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 10">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+
+    <div class="content">
+      <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="m-0">Movie 12</p>
+        <button type="button" class="btn btn-primary" (click)="watchNow(11)">Watch Now</button>
+      </div>
+
+      <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 11">This Content is only available to subscribed users, subscribe to watch</b>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="watchModal" tabindex="-1" aria-labelledby="watchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="watchModalLabel">Movie {{movieNumber}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <video width="100%" controls>
+          <source src="../../assets/Operation Valentine (Hindi) 2024.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="btn-container">
+  <button (click)="onSubscribe()" *ngIf="subscribeButton" class="subscribe">Subscribe Now</button>
+  <button (click)="onUnsubscribe()" *ngIf="unsubscribeButton" class="subscribe">Unsubscribe</button>
+</div>
+<div class="parent-container">
+  <div class="container">
+    <img *ngIf="subscribedContent" src="https://plus.unsplash.com/premium_photo-1719337677732-66b37321d5c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400" alt="">
+
+    <img *ngIf="subscribedContent" src="https://plus.unsplash.com/premium_photo-1719337677732-66b37321d5c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400" alt="">
+    <img *ngIf="subscribedContent" src="https://plus.unsplash.com/premium_photo-1719337677732-66b37321d5c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400" alt="">
+    <img src="https://images.unsplash.com/photo-1718965107760-4a3f6e64fcaf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400" alt="">
+    <img src="https://images.unsplash.com/photo-1718965107760-4a3f6e64fcaf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400" alt="">
+    <img src="https://images.unsplash.com/photo-1718965107760-4a3f6e64fcaf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400" alt="">
+
+
+    <button *ngIf="hideButton" (click)="hideContent()">Hide Image</button>
+    <button *ngIf="showButton" (click)="showContent()">Show Content</button>
+  </div>
+</div>
+
+ -->
