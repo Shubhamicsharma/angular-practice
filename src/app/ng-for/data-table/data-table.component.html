@@ -1,0 +1,22 @@
+<h1 class="text-center">User Data</h1>
+
+<div class="btn-container w-100 d-flex justify-content-center my-3" >
+  <button class="btn btn-primary me-3" (click)="getUserData()">Get User Data</button>
+  <button class="btn btn-primary" (click)="onClear()">Clear Data</button>
+
+</div>
+
+<div class="p-4">
+  <table class="table table-striped mx-auto">
+    <thead>
+      <th *ngFor="let header of tableHeaders">{{header}}</th>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let data of userData">
+        <td *ngFor="let dataItem of data | keyvalue">{{dataItem.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
