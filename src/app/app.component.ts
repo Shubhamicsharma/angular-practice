@@ -8,13 +8,14 @@ import { DynamicFormAssignmentComponent } from './dynamic-form-assignment/dynami
 import { ServiceDataSharingComponent } from './service-data-sharing/service-data-sharing.component';
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
 import { NgForComponent } from './ng-for/ng-for.component';
-
+import { FetchAPIDataComponent } from "./fetch-apidata/fetch-apidata.component";
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, HomeComponent, ContactUsComponent, AboutUsComponent, DynamicFormAssignmentComponent, ServiceDataSharingComponent, StructuralDirectivesComponent, NgForComponent],
+  imports: [RouterOutlet, LoginComponent, HomeComponent, ContactUsComponent, AboutUsComponent, DynamicFormAssignmentComponent, ServiceDataSharingComponent, StructuralDirectivesComponent, NgForComponent, FetchAPIDataComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = '00_ClassWork';

@@ -30,6 +30,10 @@
     <h1>Register</h1>
     <form action="">
       <div>
+        <input type="text" [(ngModel)]="registerName" name="registerName" placeholder=" " id="name"  required>
+        <label for="name">Name</label>
+      </div>
+      <div>
         <input type="text" [(ngModel)]="registerUsername" name="registerUsername" placeholder=" " id="username"  required>
         <label for="username">Username</label>
       </div>
@@ -56,18 +60,33 @@
     <div>
       <img src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png" width="50" alt="">
     </div>
-    <h1 class="m-0">XYZ</h1>
-    <div class="dropdown">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Actions
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#" (click)="onSubscribe()">{{subscribeBtnText}}</a></li>
-        <li><a class="dropdown-item" href="#" (click)="onLogout()" >Logout</a></li>
-      </ul>
+    <h3 class="m-0">Welcome {{currentUser.name}} to XYZ</h3>
+    <div class="d-flex gap-2 align-items-center">
+      <div class="status" [ngClass]="{'status-active': currentUser.isSubscribed}"></div>
+      <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Actions
+        </button>
+        <ul class="dropdown-menu">
+          <li><a [ngClass]="{'un-subscribed' : currentUser.isSubscribed , 'subscribed' : !currentUser.isSubscribed}" class="dropdown-item" href="#" (click)="onSubscribe()">{{subscribeBtnText}}</a></li>
+          <li><a class="dropdown-item" href="#" (click)="onLogout()" >Logout</a></li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="content-container p-4 d-flex justify-content-evenly flex-wrap">
+      <div *ngFor="let movie of movieList" class="content">
+        <div class="img-container">
+          <img [src]="movie.coverImgLink" width="300px" alt="">
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-2">
+          <p class="m-0">{{movie.movieTitle}}</p>
+          <button type="button" class="btn btn-primary" (click)="watchNow(movie.idx)">Watch Now</button>
+        </div>
+
+        <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === movie.idx">This Content is only available to subscribed users, subscribe to watch</b>
+      </div>
     <!-- <div class="content">
       <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
 
@@ -80,8 +99,9 @@
 
     </div> -->
 
+
     <!-- src/app/app.component.html -->
-    <div class="content">
+    <!-- <div class="content">
       <div class="img-container">
         <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300px" alt="">
       </div>
@@ -235,7 +255,7 @@
       </div>
 
       <b class="locked-content mt-3 text-danger" *ngIf="isLocked && selectedContentIndex === 11">This Content is only available to subscribed users, subscribe to watch</b>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -245,14 +265,15 @@
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="watchModalLabel">Movie {{movieNumber}}</h5>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <video width="100%" controls>
-          <source src="../../assets/Operation Valentine (Hindi) 2024.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

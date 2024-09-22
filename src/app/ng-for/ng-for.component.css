@@ -1,8 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
 table {
   padding: 1rem;
+  border: 1px solid black;
+
 }
 
 td, th {
   border: 1px solid black;
+
   padding: 0.5rem 1rem;
 }
+
+
+.form-parent-container {
+  width: 100%;
+}
+
+.form-container {
+  /* width: max-content; */
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+  justify-content: center;
+}
+
+form{
+  border: 1px solid black;
+  width: 25%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+

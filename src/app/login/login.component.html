@@ -1,4 +1,4 @@
-<h1>{{formTitle}}</h1>
+<!-- <h1>{{formTitle}}</h1>
 
 <label for="email">Email Id</label>
 <input id="email" type="email" [(ngModel)]="emailValue" name="emailValue"/>
@@ -26,4 +26,34 @@
 
 <hr />
 
-<app-login-child [parentFormTitle]="formTitle" [parentUsername]="emailValue" [parentPassword]="password" (childDataObject)="onRecieveData($event)"></app-login-child>
+<app-login-child [parentFormTitle]="formTitle" [parentUsername]="emailValue" [parentPassword]="password" (childDataObject)="onRecieveData($event)"></app-login-child> -->
+
+
+<!-- <h1>{{formTitle}}</h1>
+
+<div class="d-flex gap-5">
+  <button routerLink = "home">Home</button>
+  <button routerLink = 'about'>About</button>
+
+  <button (click)="onNavigate()">Navigate to Home Using navigate method</button>
+</div> -->
+
+<div class="login-parent-container">
+  <div  class="login-container shadow">
+    <h1>Login</h1>
+    <form action="">
+      <div>
+        <input type="text" [(ngModel)]="loginUsername" name="loginUsername" placeholder=" " id="username"  required>
+        <label for="username">Username</label>
+      </div>
+      <div>
+        <input type="password" [(ngModel)]="loginPassword" placeholder=" " id="password" name="loginPassword">
+        <label for="password">Password</label>
+      </div>
+
+      <div class="btn-container">
+        <button class="login my-2" (click)="onLogin()">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
