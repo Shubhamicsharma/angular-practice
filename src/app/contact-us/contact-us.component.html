@@ -1,10 +1,15 @@
 <form>
+  <label>First Name</label>
+  <input type="text" [(ngModel)]="receiveData.firstName" name="address">
+  <label>Last Name</label>
+  <input type="text" [(ngModel)]="receiveData.lastName" name="contact">
+  <label>Email</label>
+  <input type="text" [(ngModel)]="receiveData.email" name="address">
   <label>Address</label>
-  <input type="text" [(ngModel)]="addressDetails.address" name="address">
-  <label>Contact No</label>
-  <input type="text" [(ngModel)]="addressDetails.contact" name="contact">
-  <label>Service Data</label>
+  <input type="text" [(ngModel)]="receiveData.address" name="contact">
+  <!-- <label>Service Data</label>
   <input type="text" [(ngModel)]="sharedata" name="sharedata">
-  <button (click)="onSendData()">Send</button>
+  <button (click)="onSendData()">Send</button> -->
 </form>
-<app-contact-us-child [parentData]="addressDetails"></app-contact-us-child>
+<!-- <app-contact-us-child [parentData]="addressDetails"></app-contact-us-child> -->
+<button (click)="onFetch()">FetchRouteData</button>

@@ -5,6 +5,37 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class CommonServiceService {
+
+  userData$ = new BehaviorSubject({
+    0 : "",
+    1 : "",
+    2 : "",
+    3 : "",
+    4 : "",
+    5 : ""
+  })
+
+  setUserData(userData:any){
+    this.userData$.next(userData);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   data$ = new BehaviorSubject('');
 
   setData(serviceData:any){

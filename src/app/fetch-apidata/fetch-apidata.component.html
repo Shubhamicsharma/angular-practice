@@ -1,0 +1,83 @@
+<button class="btn m-3" [ngClass]="{
+    'btn-success': btnColor === 'green',
+    'btn-primary': btnColor !== 'green',
+    'text-bold': btnColor,
+    'text-italic': btnColor
+  }" (click)="getUserData()">Get Table Data</button>
+
+<!-- <form class="w-25 mx-auto border px-3 py-4">
+    <div class="d-flex flex-column">
+        <label>ID</label>
+        <input type="text" [(ngModel)]="userData.id" name="userData.id">
+    </div>
+    <div class="d-flex flex-column">
+        <label>First Name</label>
+        <input type="text" [(ngModel)]="userData.first_name" name="userData.first_name">
+    </div>
+    <div class="d-flex flex-column">
+        <label>Last Name</label>
+        <input type="text" [(ngModel)]="userData.last_name" name="userData.last_name">
+    </div>
+    <div class="d-flex flex-column">
+        <label>Contact</label>
+        <input type="text" [(ngModel)]="userData.contact" name="userData.contact">
+    </div>
+    <div class="d-flex flex-column">
+        <label>Address</label>
+        <input type="text" [(ngModel)]="userData.address" name="userData.address">
+    </div>
+    <div class="d-flex flex-column">
+        <label>Company Name</label>
+        <input type="text" [(ngModel)]="userData.company" name="userData.company">
+    </div>
+    <div class="d-flex flex-column">
+        <label>Designation</label>
+        <input type="text" [(ngModel)]="userData.designation" name="userData.designation">
+    </div>
+</form> -->
+
+
+<div class="px-3">
+    <table class="table table-striped border border-black border-2">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Address</th>
+            <th scope="col">Company</th>
+            <th scope="col">Designation</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let user of userData">
+            <td>{{user.id}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.contact}}</td>
+            <td>{{user.address}}</td>
+            <td>{{user.company}}</td>
+            <td>{{user.designation}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<button class="btn btn-primary m-3" (click)="getCountries()">Get Countries List</button>
+
+<select name="" id="" class="p-1 rounded">
+    <option value="" *ngFor="let country of countriesData">{{country.country}}</option>
+</select>
+
+
+<form [formGroup]="myForm">
+    <label for="myInput">My Input</label>
+    <input id="myInput" formControlName="myInput" />
+
+    <div *ngIf="myForm.get('myInput')?.hasError('customError')">
+      {{ myForm.get('myInput')?.getError('customError') }}
+    </div>
+  </form>

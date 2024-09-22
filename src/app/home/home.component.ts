@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { HomeChildComponent } from './home-child/home-child.component';
+import { Router, RouterLink, NavigationExtras } from '@angular/router';
+import { query } from '@angular/animations';
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [FormsModule, HomeChildComponent],
+	imports: [FormsModule, HomeChildComponent, RouterLink],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor (private routerObj:Router){}
 	// Current Address Variables
 	currentFlatNo = ""
 	currentBuilding = ''
@@ -53,7 +56,22 @@ export class HomeComponent {
 	}
 
 
+  firstName = '';
+  lastName = '';
+  email = '';
+  address = '';
 
+  navigateToContact(){
+     const dataObj : NavigationExtras = {
+      queryParams: {
+            'firstName' : this.firstName,
+            "lastName" : this.lastName,
+            "email" : this.email,
+            "address" : this.address,
+      }
+     }
+    this.routerObj.navigate(['/contact'], dataObj)
+  }
 
 	// firstName = "Shubham"
 	// lastName = ""

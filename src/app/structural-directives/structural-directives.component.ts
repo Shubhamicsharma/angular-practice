@@ -11,6 +11,8 @@ declare var bootstrap: any;
   styleUrl: './structural-directives.component.css'
 })
 export class StructuralDirectivesComponent implements OnInit {
+
+    userStatus = 'Active';
   // Login Credentials Variable
   loginUsername = '';
   loginPassword = '';
@@ -19,6 +21,7 @@ export class StructuralDirectivesComponent implements OnInit {
   loginViewer = true;
 
   // Register Credentials
+  registerName = '';
   registerUsername = '';
   registerPassword = '';
 
@@ -34,7 +37,7 @@ export class StructuralDirectivesComponent implements OnInit {
   alreadyRegistered = false
 
   // Content Locked Toggler
-  isLocked = true;
+  isLocked : boolean | null = null;
 
   // Toggle between Register and login view
   onRegisterNow(){
@@ -50,11 +53,13 @@ export class StructuralDirectivesComponent implements OnInit {
   // Users Dummy Database
   users = [
     {
+      name : 'Shubham Sharma',
       username: "shubhamsharma@gmail.com",
       password: "shubham123",
       isSubscribed : true
     },
     {
+      name : "User",
       username: "user1@gmail.com",
       password : 'user123',
       isSubscribed : false
@@ -63,6 +68,7 @@ export class StructuralDirectivesComponent implements OnInit {
 
   // Object to store current user details
   currentUser = {
+    name : '',
     username : '',
     password : '',
     isSubscribed : false
@@ -82,6 +88,7 @@ export class StructuralDirectivesComponent implements OnInit {
       this.loginViewer = false;
       this.contentViewer = true;
 
+      // this.isLocked = !user.isSubscribed;
       // Remove Invalid credentials warning
       this.invalidCredentials = false
 
@@ -108,6 +115,7 @@ export class StructuralDirectivesComponent implements OnInit {
       }else {
         // User does not exist, add new user to db
         this.users.push({
+          name : this.registerName,
           username: this.registerUsername,
           password: this.registerPassword,
           isSubscribed: false
@@ -140,17 +148,21 @@ export class StructuralDirectivesComponent implements OnInit {
 
 
   // Track which content Watch Now button was clicked
-  selectedContentIndex: number | null = null;
+  selectedContentIndex: number = 0;
 
   // Function to handle "Watch Now" button click
   watchNow(index: number): void {
+    console.log("Index: " + index)
     this.selectedContentIndex = index;
+
     if (this.currentUser.isSubscribed) {
       this.isLocked = false;
-      this.movieNumber = index+1;
+      // this.movieNumber = index+1;
       const modalElement = document.getElementById('watchModal');
       const modal = new bootstrap.Modal(modalElement!);
       modal.show();
+    }else {
+      this.isLocked = true
     }
   }
 
@@ -161,9 +173,10 @@ export class StructuralDirectivesComponent implements OnInit {
       if(confirm('Are you sure you want to unsubscribe')){
         this.currentUser.isSubscribed = false
         this.subscribeBtnText = 'Subscribe'
-        this.isLocked = true;
-        this.selectedContentIndex = -1
+        this.isLocked = null;
+        this.selectedContentIndex = 0
       }
+
     }else{
 
       if(confirm('Are you sure you want to subscribe by paying 9.99$/month')){
@@ -181,6 +194,7 @@ export class StructuralDirectivesComponent implements OnInit {
       this.contentViewer = false
       this.loginViewer = true;
       this.currentUser = {
+        name : '',
         username: '',
         password: "",
         isSubscribed: false
@@ -188,13 +202,105 @@ export class StructuralDirectivesComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+
       this.loginUsername = localStorage.getItem('username') || '';
       this.loginPassword = localStorage.getItem('password') || '';
   }
 
-  movieNumber = 0;
+  // movieNumber = 0;
 
-
+  movieList = [
+    {
+      idx : 0,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 1",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 1,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 2",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 2,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 3",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 3,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 4",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 4,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 5",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 5,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 6",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 6,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 7",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 7,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 8",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 8,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 9",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 9,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 10",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 10,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 11",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 11,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 12",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 12,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 13",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 13,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 14",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    },
+    {
+      idx : 14,
+      coverImgLink : "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      movieTitle : "Movie 15",
+      movieLink : '../../assets/Operation Valentine (Hindi) 2024.mp4'
+    }
+  ]
 
 
 
