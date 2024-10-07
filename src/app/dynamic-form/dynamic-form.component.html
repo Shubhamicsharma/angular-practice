@@ -1,0 +1,37 @@
+<h1>Dynamic Form</h1>
+
+
+<div class="m-5 py-5 border rounded">
+    <div class="d-flex flex-wrap">
+        <div class="w-100" >
+            <!-- <div class="w-100" *ngIf="field.type != 'textarea' && field.type!='checkbox'">
+                <label style="width: 7.5rem;">{{field.label}}</label>
+                <input style="width: 100%;" [type]="field.type">
+            </div>
+            <div *ngIf="field.type == 'checkbox'">
+                <label style="width: 7.5rem;">{{field.label}}</label>
+                <label class="w-75">{{field.label}}</label>
+            </div>
+            <div *ngIf="field.type == 'textarea'">
+                <input class="me-5" [type]="field.type">
+                <label class="w-75">{{field.label}}</label>
+            </div> -->
+
+            <div class="all d-flex flex-wrap"></div>
+            <div class="checkbox d-flex w-100"></div>
+            <div class="textarea"></div>
+        </div>
+    </div>
+    <!-- <div class="d-flex flex-wrap">
+        <div class="w-100 px-5 py-2" *ngFor="let field of filterFormFields(dummyFormFields, 'textarea')">
+            <label style="width: 7.5rem;">{{field.label}}</label>
+            <textarea style="width: 100%;"></textarea>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap">
+        <div class="w-25 px-5 py-2" *ngFor="let field of filterFormFields(dummyFormFields, 'checkbox')">
+            <input class="me-5" [type]="field.type">
+            <label class="w-75">{{field.label}}</label>
+        </div>
+    </div> -->
+</div>

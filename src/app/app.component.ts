@@ -10,10 +10,12 @@ import { StructuralDirectivesComponent } from './structural-directives/structura
 import { NgForComponent } from './ng-for/ng-for.component';
 import { FetchAPIDataComponent } from "./fetch-apidata/fetch-apidata.component";
 import { HttpClientModule } from '@angular/common/http';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { OwlCarouselComponent } from './owl-carousel/owl-carousel.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, HomeComponent, ContactUsComponent, AboutUsComponent, DynamicFormAssignmentComponent, ServiceDataSharingComponent, StructuralDirectivesComponent, NgForComponent, FetchAPIDataComponent],
+  imports: [RouterOutlet, LoginComponent, HomeComponent, ContactUsComponent, AboutUsComponent, DynamicFormAssignmentComponent, ServiceDataSharingComponent, StructuralDirectivesComponent, NgForComponent, FetchAPIDataComponent, DynamicFormComponent, OwlCarouselComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
