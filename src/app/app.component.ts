@@ -9,7 +9,7 @@ import { ServiceDataSharingComponent } from './service-data-sharing/service-data
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
 import { NgForComponent } from './ng-for/ng-for.component';
 import { FetchAPIDataComponent } from "./fetch-apidata/fetch-apidata.component";
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { OwlCarouselComponent } from './owl-carousel/owl-carousel.component';
 @Component({

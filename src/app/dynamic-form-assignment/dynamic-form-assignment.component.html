@@ -1,4 +1,4 @@
-<h1>{{formTitle}}</h1>
+<!-- <h1>{{formTitle}}</h1>
 
 <form id="myForm">
   <label for="firstName"> {{firstNameLabel}} </label>
@@ -116,4 +116,22 @@
     <button class="submit-btn" (click) = "onSubmit()"> {{submitButtonName}} </button>
     <button class="cancel-btn" (click)="onCancel()"> {{cancelButtonName}} </button>
   </div>
-</form>
+</form> -->
+
+
+<button (click)="selectedRows()">Console</button>
+
+
+<div id="inventory-list-container" class="grid-container border rounded">
+
+    <angular-slickgrid
+                      style="overflow-y: hidden;"
+                      gridId="inventoryGrid"
+                      [columnDefinitions]="columnDefinitions"
+                      [gridOptions]="gridOptions"
+                      [dataset]="dataSet"
+                      (onAngularGridCreated)="angularGridReady($event)"
+                      (onGridStateChanged)="grid2StateChanged($event)">
+    </angular-slickgrid>
+  </div>
+
