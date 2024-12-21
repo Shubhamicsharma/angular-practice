@@ -1,4 +1,33 @@
-form td {
+form {
+    width: 100%;
+}
+
+.parent-container {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+
+
+.text-input {
+    width: 50%;
+}
+
+.number-input {
+    width: 50%;
+}
+
+.checkbox-input {
+    width: 25%;
+}
+
+.textarea {
+    width: 100%;
+}
+
+/* form td {
   border: 1px solid black;
   padding: 0.5rem 1.25rem;
 }
@@ -46,4 +75,4 @@ table {
 form label {
   display: inline-block;
   width: 150px;
-}
+} */

@@ -1,4 +1,47 @@
-<h1>{{formTitle}}</h1>
+
+<form action="">
+    <div class="w-100 d-flex flex-wrap">
+        <div
+        class="px-5 mt-4"
+        [ngClass]="{
+            'text-input' : field.type == 'text',
+            'number-input': field.type == 'number',
+            'checkbox-input': field.type == 'checkbox',
+            'textarea': field.type == 'textarea'
+        }"
+        *ngFor="let field of formFields">
+            <div *ngIf="field.type == 'text'" class="w-100 d-block">
+                <app-input-text class="w-100 d-block" [labelName]="field.label"></app-input-text>
+            </div>
+            <div *ngIf="field.type == 'number'" class="">
+                <app-input-number class="w-100 d-block" [labelName]="field.label"></app-input-number>
+            </div>
+            <div *ngIf="field.type == 'checkbox'" class="">
+                <app-input-checkbox class="w-100 d-block" [labelName]="field.label"></app-input-checkbox>
+            </div>
+            <div *ngIf="field.type == 'textarea'" class="">
+                <app-textarea class="w-100 d-block" [labelName]="field.label"></app-textarea>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>{{formTitle}}</h1>
 
 <form id="myForm">
   <label for="firstName"> {{firstNameLabel}} </label>
@@ -116,4 +159,6 @@
     <button class="submit-btn" (click) = "onSubmit()"> {{submitButtonName}} </button>
     <button class="cancel-btn" (click)="onCancel()"> {{cancelButtonName}} </button>
   </div>
-</form>
+</form> -->
+
+
